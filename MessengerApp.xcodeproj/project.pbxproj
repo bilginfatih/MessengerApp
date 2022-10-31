@@ -20,7 +20,8 @@
 		39BA87B3290FAD4C00611E25 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B2290FAD4C00611E25 /* VideoPlayerViewController.swift */; };
 		39BA87B5290FAD7200611E25 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B4290FAD7200611E25 /* NewConversationViewController.swift */; };
 		39BA87B7290FAD8700611E25 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B6290FAD8700611E25 /* ProfileViewController.swift */; };
-		39EDEE68290FE75F00F02FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39EDEE67290FE75F00F02FB5 /* GoogleService-Info.plist */; };
+		39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */; };
+		39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */; };
 		D567D2CA50BC2F20D8748921 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A01FB976874A88EEF5FF371 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +43,8 @@
 		39BA87B2290FAD4C00611E25 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		39BA87B4290FAD7200611E25 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		39BA87B6290FAD8700611E25 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		39EDEE67290FE75F00F02FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A01FB976874A88EEF5FF371 /* Pods_MessengerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,7 +63,6 @@
 		39BA8785290FAAA600611E25 = {
 			isa = PBXGroup;
 			children = (
-				39EDEE67290FE75F00F02FB5 /* GoogleService-Info.plist */,
 				39BA8790290FAAA600611E25 /* MessengerApp */,
 				39BA878F290FAAA600611E25 /* Products */,
 				CE11F96B4D4FD4762859E168 /* Pods */,
@@ -80,6 +81,7 @@
 		39BA8790290FAAA600611E25 /* MessengerApp */ = {
 			isa = PBXGroup;
 			children = (
+				39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */,
 				39BA87A9290FABC900611E25 /* Resources */,
 				39BA87A8290FABBE00611E25 /* ViewModels */,
 				39BA87A7290FABB200611E25 /* Models */,
@@ -132,6 +134,7 @@
 				39BA8791290FAAA600611E25 /* AppDelegate.swift */,
 				39BA8793290FAAA600611E25 /* SceneDelegate.swift */,
 				39B3FAB0290FB7BF00B04D0D /* Extensions.swift */,
+				39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -232,9 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BA879E290FAAAA00611E25 /* LaunchScreen.storyboard in Resources */,
-				39EDEE68290FE75F00F02FB5 /* GoogleService-Info.plist in Resources */,
 				39BA879B290FAAAA00611E25 /* Assets.xcassets in Resources */,
 				39BA8799290FAAA600611E25 /* Main.storyboard in Resources */,
+				39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BA87AC290FACF700611E25 /* LoginViewController.swift in Sources */,
+				39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */,
 				39BA87AE290FAD0B00611E25 /* RegisterViewController.swift in Sources */,
 				39BA87B5290FAD7200611E25 /* NewConversationViewController.swift in Sources */,
 				39BA8796290FAAA600611E25 /* ConversationsViewController.swift in Sources */,

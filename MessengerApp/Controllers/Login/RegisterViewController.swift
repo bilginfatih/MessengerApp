@@ -19,7 +19,7 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
@@ -202,21 +202,34 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
             alertUserLoginError()
             return
         }
-        //Firebase Log In
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let result = authResult, error == nil else {
-                print("Error cureating user")
+        //Firebase Register
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
+           
+            guard let strongSelf = self else{
                 return
             }
-            
-            let user = result.user
-            print("Created user: \(user)")
-        }
+            guard !exists else {
+                // user already exists
+                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
+                return
+            }
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                
+                guard authResult != nil, error == nil else {
+                    print("Error cureating user")
+                    return
+                }
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                    lastName: lastName, emailAddress: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+            }
+        })
     }
     
-    func alertUserLoginError() {
+    func alertUserLoginError(message: String = "Please enter all") {
         let alert = UIAlertController(title: "Woops",
-                                      message: "Please enter all",
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss",
                                       style: .cancel))
@@ -284,11 +297,11 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     func presentPhotoPicker() {
-       /* let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true) */
+        /* let vc = UIImagePickerController()
+         vc.sourceType = .photoLibrary
+         vc.delegate = self
+         vc.allowsEditing = true
+         present(vc, animated: true) */
         
         var configuration = PHPickerConfiguration()
         configuration.filter = PHPickerFilter.images
@@ -315,16 +328,16 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
-   /* func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        picker.dismiss(animated: true)
-        
-        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-            return
-        }
-        
-        self.imageView.image = selectedImage
-    } */
+    /* func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+     
+     picker.dismiss(animated: true)
+     
+     guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+     return
+     }
+     
+     self.imageView.image = selectedImage
+     } */
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
