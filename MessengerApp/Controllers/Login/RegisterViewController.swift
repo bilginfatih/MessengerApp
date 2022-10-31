@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import PhotosUI
+import FirebaseAuth
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -201,6 +203,15 @@ class RegisterViewController: UIViewController {
             return
         }
         //Firebase Log In
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("Error cureating user")
+                return
+            }
+            
+            let user = result.user
+            print("Created user: \(user)")
+        }
     }
     
     func alertUserLoginError() {
@@ -273,23 +284,47 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     func presentPhotoPicker() {
-        let vc = UIImagePickerController()
+       /* let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
         vc.allowsEditing = true
-        present(vc, animated: true)
+        present(vc, animated: true) */
+        
+        var configuration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.images
+        configuration.selectionLimit = 10
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         
+        for item in results {
+            
+            item.itemProvider.loadObject(ofClass: UIImage.self) { object, error in
+                
+                if let image = object as? UIImage {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+            }
+        }
+    }
+    
+   /* func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true)
         
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
         
         self.imageView.image = selectedImage
-    }
+    } */
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
