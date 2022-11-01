@@ -129,8 +129,10 @@ class LoginViewController: UIViewController {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
+        
+        
         guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
-            alertUserLoginError()
+            //alertUserLoginError(message: "sorun")
             return
         }
         //Firebase Log In
@@ -150,9 +152,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func alertUserLoginError() {
+    func alertUserLoginError(message: String) {
         let alert = UIAlertController(title: "Woops",
-                                      message: "Please enter all",
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss",
                                       style: .cancel))

@@ -8,6 +8,7 @@
 import UIKit
 import PhotosUI
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
     
@@ -194,36 +195,48 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
+        if isValidEmailAddress(emailAddressString: emailField.text ?? "") == false {
+            alertUserLoginError(message: "Geçerli Bir Eposta Giriniz")
+        }
+        else if isValidPassword(password: passwordField.text ?? "") == false {
+            alertUserLoginError(message: "Şifreniz Bir Büyük Harf Ve Bir Rakam içermelidir")
+        } else if firstNameField.text == "" {
+            alertUserLoginError(message: "Adınızı Giriniz")
+        } else if lastNameField.text == "" {
+            alertUserLoginError(message: "Soyadınızı Giriniz")
+        }
+        
         guard let firstName = firstNameField.text,
               let lastName = lastNameField.text,
               let email = emailField.text,
               let password = passwordField.text,
               !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
-            alertUserLoginError()
             return
         }
+        
         //Firebase Register
         DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
-           
-            guard let strongSelf = self else{
+            
+            guard let strongSelf = self else {
                 return
             }
-            guard !exists else {
+          /*  guard !exists else {
                 // user already exists
                 strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
                 return
-            }
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            } */
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
                 
                 guard authResult != nil, error == nil else {
-                    print("Error cureating user")
+                    strongSelf.alertUserLoginError(message: "Bu Eposta Halihazırda Kullanılıyor.")
                     return
                 }
                 DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName, emailAddress: email))
+                                                                    lastName: lastName,
+                                                                    emailAddress: email))
                 
                 strongSelf.navigationController?.dismiss(animated: true)
-            }
+            })
         })
     }
     
@@ -241,6 +254,36 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         let vc = RegisterViewController()
         vc.title = "Create Account"
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func isValidEmailAddress(emailAddressString: String) -> Bool {
+        var returnValue = true
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: emailRegEx)
+            let nsString = emailAddressString as NSString
+            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        // least one uppercase,
+        // least one digit
+        //  min 6 characters total
+        let passwordRegex = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{6,}$")
+        return passwordRegex.evaluate(with: password)
     }
     
 }
@@ -269,17 +312,17 @@ extension RegisterViewController: UITextFieldDelegate {
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func presentPhotoActionSheet() {
-        let actionSheet = UIAlertController(title: "Profile Picture",
+        let actionSheet = UIAlertController(title: "Profil Fotoğrafı",
                                             message: "How would you like to select a picture?",
                                             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel",
+        actionSheet.addAction(UIAlertAction(title: "İptal",
                                             style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+        actionSheet.addAction(UIAlertAction(title: "Kamerayı Aç",
                                             style: .default,
                                             handler: { [weak self] _ in
             self?.presentCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Chose Photo",
+        actionSheet.addAction(UIAlertAction(title: "Fotoğraf Seç",
                                             style: .default,
                                             handler: { [weak self] _ in
             self?.presentPhotoPicker()
@@ -297,15 +340,9 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     func presentPhotoPicker() {
-        /* let vc = UIImagePickerController()
-         vc.sourceType = .photoLibrary
-         vc.delegate = self
-         vc.allowsEditing = true
-         present(vc, animated: true) */
-        
         var configuration = PHPickerConfiguration()
         configuration.filter = PHPickerFilter.images
-        configuration.selectionLimit = 10
+        configuration.selectionLimit = 1
         
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
@@ -327,17 +364,6 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             }
         }
     }
-    
-    /* func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-     
-     picker.dismiss(animated: true)
-     
-     guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-     return
-     }
-     
-     self.imageView.image = selectedImage
-     } */
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
