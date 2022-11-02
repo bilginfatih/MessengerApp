@@ -240,11 +240,11 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         })
     }
     
-    func alertUserLoginError(message: String = "Please enter all") {
-        let alert = UIAlertController(title: "Woops",
+    func alertUserLoginError(message: String) {
+        let alert = UIAlertController(title: "Woops!",
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss",
+        alert.addAction(UIAlertAction(title: "Tamam",
                                       style: .cancel))
         
         present(alert, animated: true)
@@ -317,12 +317,12 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
                                             preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "İptal",
                                             style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Kamerayı Aç",
+        actionSheet.addAction(UIAlertAction(title: "Fotoğraf Çek",
                                             style: .default,
                                             handler: { [weak self] _ in
             self?.presentCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Fotoğraf Seç",
+        actionSheet.addAction(UIAlertAction(title: "Kütüphaneden Seç",
                                             style: .default,
                                             handler: { [weak self] _ in
             self?.presentPhotoPicker()
