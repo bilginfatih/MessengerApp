@@ -21,11 +21,11 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.circle")
-        imageView.tintColor = .gray
+        imageView.tintColor = .photoPicker
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
     }()
     
@@ -36,11 +36,10 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "First Name"
+        field.placeholder = "Ad"
         field.leftView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: 5,
+                                              width: 10,
                                               height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -54,11 +53,10 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Last Name"
+        field.placeholder = "Soyad"
         field.leftView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: 5,
+                                              width: 10,
                                               height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -72,11 +70,10 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Email Address..."
+        field.placeholder = "Email"
         field.leftView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: 5,
+                                              width: 10,
                                               height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -90,11 +87,10 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         field.returnKeyType = .done
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Password"
+        field.placeholder = "Şifre"
         field.leftView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: 5,
+                                              width: 10,
                                               height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -104,7 +100,7 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
     
     private let registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Kayıt Ol", for: .normal)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
@@ -113,12 +109,10 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         return button
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Register"
-        view.backgroundColor = .white
+        title = "Kayıt Ol"
+        view.backgroundColor = .dark
         
         registerButton.addTarget(self,
                                  action: #selector(registerButtonTapped),
@@ -144,6 +138,8 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
         //gesture.numberOfTouchesRequired =
         imageView.addGestureRecognizer(gesture)
+        
+        setUpGestures()
         
     }
     
@@ -186,6 +182,19 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
                                       y: passwordField.bottom+10,
                                       width: scrollView.width-60,
                                       height: 52)
+    }
+    // MARK: - Gestures
+    
+    private func setUpGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTap() {
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
     }
     
     @objc private func registerButtonTapped() {

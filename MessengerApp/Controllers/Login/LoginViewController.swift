@@ -1,15 +1,31 @@
 //
 //  LoginViewController.swift
-//  MessengerApp
+//  LoginCritter
 //
-//  Created by Fatih Bilgin on 31.10.2022.
+//  Created by Christopher Goldsby on 3/30/18.
+//  Copyright © 2018 Christopher Goldsby. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+private let buttonFrame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonHeight)
+private let buttonHeight = textFieldHeight
+private let buttonHorizontalMargin = (textFieldHorizontalMargin / 2)
+private let buttonImageDimension: CGFloat = 18
+private let buttonVerticalMargin = (buttonHeight - buttonImageDimension) / 2
+private let buttonWidth = (textFieldHorizontalMargin / 2) + buttonImageDimension
+private let critterViewDimension: CGFloat = 160
+private let critterViewFrame = CGRect(x: 0, y: 0, width: critterViewDimension, height: critterViewDimension)
+private let critterViewTopMargin: CGFloat = 10
+private let textFieldHeight: CGFloat = 37
+private let textFieldHorizontalMargin: CGFloat = 16.5
+private let textFieldSpacing: CGFloat = 22
+private let textFieldTopMargin: CGFloat = 38.8
+private let textFieldWidth: CGFloat = 206
+
+final class LoginViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -17,53 +33,41 @@ class LoginViewController: UIViewController {
         return scrollView
     }()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+    private let critterView = CritterView(frame: critterViewFrame)
+    
+    private lazy var emailTextField: UITextField = {
+        let textField = createTextField(text: "Email")
+        textField.keyboardType = .emailAddress
+        textField.returnKeyType = .next
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
+        //textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.leftViewMode = .always
+        textField.backgroundColor = .white
+        return textField
     }()
     
-    private let emailField: UITextField = {
-        let field = UITextField()
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
-        field.returnKeyType = .continue
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Email Address..."
-        field.leftView = UIView(frame: CGRect(x: 0,
-                                              y: 0,
-                                              width: 5,
-                                              height: 0))
-        field.leftViewMode = .always
-        field.backgroundColor = .white
-        return field
-    }()
-    
-    private let passwordField: UITextField = {
-        let field = UITextField()
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
-        field.returnKeyType = .done
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Password"
-        field.leftView = UIView(frame: CGRect(x: 0,
-                                              y: 0,
-                                              width: 5,
-                                              height: 0))
-        field.leftViewMode = .always
-        field.backgroundColor = .white
-        field.isSecureTextEntry = true
-        return field
+    private lazy var passwordTextField: UITextField = {
+        let textField = createTextField(text: "Şifre")
+        textField.isSecureTextEntry = true
+        textField.rightView = showHidePasswordButton
+        showHidePasswordButton.isHidden = true
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.returnKeyType = .done
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
+        //textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.leftViewMode = .always
+        textField.backgroundColor = .white
+        return textField
     }()
     
     private let loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Giriş Yap", for: .normal)
         button.backgroundColor = .link
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
@@ -72,82 +76,194 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    
     private let facebookLoginButton: FBLoginButton = {
         let button = FBLoginButton()
         button.permissions = ["public_profile", "email"]
         return button
     }()
     
+    private let registerButton: UIButton = {
+        let button = UIButton()
+        button.configuration = .plain()
+        button.configuration?.attributedTitle = "Henüz kayıt olmadın mı ?"
+        button.configuration?.titleAlignment = .center
+        button.configuration?.attributedSubtitle = "Kayıt Ol"
+        button.configuration?.attributedSubtitle?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.configuration?.baseForegroundColor = .text
+        return button
+    }()
+    
+    private lazy var showHidePasswordButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: buttonVerticalMargin, leading: 0, bottom: buttonVerticalMargin, trailing: buttonHorizontalMargin)
+        button.frame = buttonFrame
+        button.tintColor = .text
+        button.setImage(#imageLiteral(resourceName: "Password-show"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "Password-hide"), for: .selected)
+        button.addTarget(self, action: #selector(togglePasswordVisibility(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    /*private let notificationCenter: NotificationCenter = .default
+    
+    deinit {
+        notificationCenter.removeObserver(self)
+    }*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Log In"
-        view.backgroundColor = .white
+        setUpView()
+    }
+    // MARK: - Private
+    private func setUpView() {
+        view.backgroundColor = .dark
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapRegister))
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        facebookLoginButton.delegate = self
+        
         loginButton.addTarget(self,
                               action: #selector(loginButtonTapped),
                               for: .touchUpInside)
-        
-        emailField.delegate = self
-        passwordField.delegate = self
-        
-        facebookLoginButton.delegate = self
-        
+        registerButton.addTarget(self,
+                                 action: #selector(didTapRegister),
+                                 for: .touchUpInside)
         //Add subviews
         view.addSubview(scrollView)
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(emailField)
-        scrollView.addSubview(passwordField)
+        scrollView.addSubview(critterView)
+        scrollView.addSubview(emailTextField)
+        scrollView.addSubview(passwordTextField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(facebookLoginButton)
+        scrollView.addSubview(registerButton)
+        
+        setUpGestures()
+        //setUpNotification()
+        
+        debug_setUpDebugUI()
         
     }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
         
         let size = scrollView.width/3
-        imageView.frame = CGRect(x: (scrollView.width-size)/2,
-                                 y: 20,
-                                 width: size,
-                                 height: size)
         
-        emailField.frame = CGRect(x: 30,
-                                  y: imageView.bottom+10,
-                                  width: scrollView.width-60,
-                                  height: 52)
+        critterView.frame = CGRect(x: (scrollView.width-size)/2 - 10,
+                                   y: 20,
+                                   width: size * (3/2),
+                                   height: size * (3/2))
         
-        passwordField.frame = CGRect(x: 30,
-                                     y: emailField.bottom+10,
-                                     width: scrollView.width-60,
-                                     height: 52)
+        emailTextField.frame = CGRect(x: 60,
+                                      y: critterView.bottom+10,
+                                      width: scrollView.width-120,
+                                      height: 42)
         
-        loginButton.frame = CGRect(x: 30,
-                                   y: passwordField.bottom+10,
-                                   width: scrollView.width-60,
-                                   height: 52)
+        passwordTextField.frame = CGRect(x: 60,
+                                         y: emailTextField.bottom+10,
+                                         width: scrollView.width-120,
+                                         height: 42)
         
-        facebookLoginButton.frame = CGRect(x: 30,
-                                           y: loginButton.bottom+10,
-                                           width: scrollView.width-60,
-                                           height: 52)
-        facebookLoginButton.frame.origin.y = loginButton.bottom+20
+        loginButton.frame = CGRect(x: 60,
+                                   y: passwordTextField.bottom+50,
+                                   width: scrollView.width-120,
+                                   height: 42)
+        
+        facebookLoginButton.frame = CGRect(x: 60,
+                                           y: loginButton.bottom+30,
+                                           width: scrollView.width-120,
+                                           height: 42)
+        
+        registerButton.frame = CGRect(x: 60,
+                                      y: facebookLoginButton.bottom+30,
+                                      width: scrollView.width-120,
+                                      height: 42)
+        //registerButton.frame.origin.y = loginButton.bottom+20
+    }
+    
+    private func fractionComplete(for textField: UITextField) -> Float {
+        guard let text = textField.text, let font = textField.font else { return 0 }
+        let textFieldWidth = textField.bounds.width - (2 * textFieldHorizontalMargin)
+        return min(Float(text.size(withAttributes: [NSAttributedString.Key.font : font]).width / textFieldWidth), 1)
+    }
+    
+    private func stopHeadRotation() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        critterView.stopHeadRotation()
+        passwordDidResignAsFirstResponder()
+    }
+    
+    private func passwordDidResignAsFirstResponder() {
+        critterView.isPeeking = false
+        critterView.isShy = false
+        showHidePasswordButton.isHidden = true
+        showHidePasswordButton.isSelected = false
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    private func createTextField(text: String) -> UITextField {
+        let view = UITextField(frame: CGRect(x: 0, y: 0, width: textFieldWidth, height: textFieldHeight))
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 4.07
+        view.tintColor = .dark
+        view.autocorrectionType = .no
+        view.autocapitalizationType = .none
+        view.spellCheckingType = .no
+        view.delegate = self
+        view.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        let frame = CGRect(x: 0, y: 0, width: textFieldHorizontalMargin, height: textFieldHeight)
+        view.leftView = UIView(frame: frame)
+        view.leftViewMode = .always
+        
+        view.rightView = UIView(frame: frame)
+        view.rightViewMode = .always
+        
+        view.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
+        view.textColor = .text
+        
+        let attributes: [NSAttributedString.Key : Any] = [
+            .foregroundColor: UIColor.disabledText,
+            .font : view.font!
+        ]
+        
+        view.attributedPlaceholder = NSAttributedString(string: text, attributes: attributes)
+        
+        return view
+    }
+    
+    // MARK: - Gestures
+    
+    private func setUpGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTap() {
+        stopHeadRotation()
+    }
+    // MARK: - Actions
+    
+    @objc private func togglePasswordVisibility(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        let isPasswordVisible = sender.isSelected
+        passwordTextField.isSecureTextEntry = !isPasswordVisible
+        critterView.isPeeking = isPasswordVisible
+        
+        // 🎩✨ Magic to fix cursor position when toggling password visibility
+        if let textRange = passwordTextField.textRange(from: passwordTextField.beginningOfDocument, to: passwordTextField.endOfDocument), let password = passwordTextField.text {
+            passwordTextField.replace(textRange, withText: password)
+        }
     }
     
     @objc private func loginButtonTapped() {
         
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         
-        
-        
-        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
-            //alertUserLoginError(message: "sorun")
+        guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
+            
             return
         }
         //Firebase Log In
@@ -156,25 +272,13 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            guard let result = authResult, error == nil else {
-                print("Failed to log in user with email: \(email)")
+            guard let _ = authResult, error == nil else {
+                self?.alertUserLoginError(message: "Bilgilerinizi Kontrol Edin.")
                 return
             }
             
-            let user = result.user
-            print("Logged In user: \(user)")
             strongSelf.navigationController?.dismiss(animated: true)
         }
-    }
-    
-    func alertUserLoginError(message: String) {
-        let alert = UIAlertController(title: "Woops",
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss",
-                                      style: .cancel))
-        
-        present(alert, animated: true)
     }
     
     @objc private func didTapRegister() {
@@ -183,20 +287,140 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func alertUserLoginError(message: String) {
+        let alert = UIAlertController(title: "Woops!",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam",
+                                      style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
+    // MARK: - Notifications
+    
+    /*  private func setUpNotification() {
+     notificationCenter.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+     }
+     
+     @objc private func applicationDidEnterBackground() {
+     stopHeadRotation()
+     } */
+    
+    // MARK: - Debug Mode
+    
+    private let isDebugMode = false
+    
+    private lazy var dubug_activeAnimationSlider = UISlider()
+    
+    private func debug_setUpDebugUI() {
+        guard isDebugMode else { return }
+        
+        let animateButton = UIButton(type: .system)
+        animateButton.setTitle("Activate", for: .normal)
+        animateButton.setTitleColor(.white, for: .normal)
+        animateButton.addTarget(self, action: #selector(debug_activeAnimation), for: .touchUpInside)
+        
+        let resetButton = UIButton(type: .system)
+        resetButton.setTitle("Neutral", for: .normal)
+        resetButton.setTitleColor(.white, for: .normal)
+        resetButton.addTarget(self, action: #selector(debug_neutralAnimation), for: .touchUpInside)
+        
+        let validateButton = UIButton(type: .system)
+        validateButton.setTitle("Ecstatic", for: .normal)
+        validateButton.setTitleColor(.white, for: .normal)
+        validateButton.addTarget(self, action: #selector(debug_ecstaticAnimation), for: .touchUpInside)
+        
+        dubug_activeAnimationSlider.tintColor = .light
+        dubug_activeAnimationSlider.isEnabled = false
+        dubug_activeAnimationSlider.addTarget(self, action: #selector(debug_activeAnimationSliderValueChanged(sender:)), for: .valueChanged)
+        
+        let stackView = UIStackView(
+            arrangedSubviews:
+                [
+                    animateButton,
+                    resetButton,
+                    validateButton,
+                    dubug_activeAnimationSlider
+                ]
+        )
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        view.addSubview(stackView)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    @objc private func debug_activeAnimation() {
+        critterView.startHeadRotation(startAt: dubug_activeAnimationSlider.value)
+        dubug_activeAnimationSlider.isEnabled = true
+    }
+    
+    @objc private func debug_neutralAnimation() {
+        stopHeadRotation()
+        dubug_activeAnimationSlider.isEnabled = false
+    }
+    
+    @objc private func debug_ecstaticAnimation() {
+        critterView.isEcstatic.toggle()
+    }
+    
+    @objc private func debug_activeAnimationSliderValueChanged(sender: UISlider) {
+        critterView.updateHeadRotation(to: sender.value)
+    }
 }
-
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
         
-        if textField == emailField {
-            passwordField.becomeFirstResponder()
+        if textField == emailTextField {
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
+                let fractionComplete = self.fractionComplete(for: textField)
+                self.critterView.startHeadRotation(startAt: fractionComplete)
+                self.passwordDidResignAsFirstResponder()
+            }
         }
-        else if textField == passwordField {
+        else if textField == passwordTextField {
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
+                self.critterView.isShy = true
+                self.showHidePasswordButton.isHidden = false
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        else {
+            passwordTextField.resignFirstResponder()
+            passwordDidResignAsFirstResponder()
             loginButtonTapped()
         }
-        
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            critterView.stopHeadRotation()
+        }
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        guard !critterView.isActiveStartAnimating, textField == emailTextField else { return }
+        
+        let fractionComplete = self.fractionComplete(for: textField)
+        critterView.updateHeadRotation(to: fractionComplete)
+        
+        if let text = textField.text {
+            critterView.isEcstatic = text.contains("@")
+        }
     }
 }
 
@@ -207,7 +431,7 @@ extension LoginViewController: LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginKit.FBLoginButton, didCompleteWith result: FBSDKLoginKit.LoginManagerLoginResult?, error: Error?) {
         guard let token = result?.token?.tokenString else {
-            print("User failed to login facebook")
+            self.alertUserLoginError(message: error?.localizedDescription ?? "Hata!!")
             return
         }
         
@@ -220,13 +444,13 @@ extension LoginViewController: LoginButtonDelegate {
         facebookReques.start { _, result, error in
             guard let result = result as? [String: Any],
                   error == nil else {
-                print("Failed to make facebook graph request")
+                self.alertUserLoginError(message: error?.localizedDescription ?? "Hata")
                 return
             }
-            print("\(result)")
+            
             guard let userName = result["name"] as? String,
                   let email = result["email"] as? String else {
-                print("failed to get email and name from fb result")
+                self.alertUserLoginError(message: error?.localizedDescription ?? "Hata!")
                 return
             }
             
@@ -255,7 +479,7 @@ extension LoginViewController: LoginButtonDelegate {
                 
                 guard authResult != nil, error == nil else {
                     if let error = error {
-                        print("Facebook credential login failed, MFA may be needed - \(error)")
+                        self?.alertUserLoginError(message: error.localizedDescription)
                     }
                     return
                 }
