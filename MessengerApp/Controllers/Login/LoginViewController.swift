@@ -1,9 +1,8 @@
 //
 //  LoginViewController.swift
-//  LoginCritter
+//  MessengerApp
 //
-//  Created by Christopher Goldsby on 3/30/18.
-//  Copyright © 2018 Christopher Goldsby. All rights reserved.
+//  Created by Fatih Bilgin on 31.10.2022.
 //
 
 import UIKit
