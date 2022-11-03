@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import JGProgressHUD
 
 private let buttonFrame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonHeight)
 private let buttonHeight = textFieldHeight
@@ -15,9 +16,7 @@ private let buttonHorizontalMargin = (textFieldHorizontalMargin / 2)
 private let buttonImageDimension: CGFloat = 18
 private let buttonVerticalMargin = (buttonHeight - buttonImageDimension) / 2
 private let buttonWidth = (textFieldHorizontalMargin / 2) + buttonImageDimension
-private let critterViewDimension: CGFloat = 160
-private let critterViewFrame = CGRect(x: 0, y: 0, width: critterViewDimension, height: critterViewDimension)
-private let critterViewTopMargin: CGFloat = 10
+private let critterViewFrame = CGRect(x: 0, y: 0, width: 160, height: 160)
 private let textFieldHeight: CGFloat = 37
 private let textFieldHorizontalMargin: CGFloat = 16.5
 private let textFieldSpacing: CGFloat = 22
@@ -26,13 +25,14 @@ private let textFieldWidth: CGFloat = 206
 
 final class LoginViewController: UIViewController {
     
+    private let spinner = JGProgressHUD(style: .dark)
+    private let critterView = CritterView(frame: critterViewFrame)
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
         return scrollView
     }()
-    
-    private let critterView = CritterView(frame: critterViewFrame)
     
     private lazy var emailTextField: UITextField = {
         let textField = createTextField(text: "Email")
@@ -265,10 +265,17 @@ final class LoginViewController: UIViewController {
             
             return
         }
+        
+        spinner.show(in: view)
+        
         //Firebase Log In
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let strongSelf = self else{
                 return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
             }
             
             guard let _ = authResult, error == nil else {

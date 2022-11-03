@@ -8,9 +8,11 @@
 import UIKit
 import PhotosUI
 import FirebaseAuth
-import FirebaseDatabase
+import JGProgressHUD
 
 class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
+    
+    private let spinner = JGProgressHUD()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -223,12 +225,19 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
             return
         }
         
+        spinner.show(in: view)
+        
         //Firebase Register
         DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             
             guard let strongSelf = self else {
                 return
             }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
           /*  guard !exists else {
                 // user already exists
                 strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
