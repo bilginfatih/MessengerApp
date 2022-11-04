@@ -43,6 +43,11 @@
 		39BA87B7290FAD8700611E25 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B6290FAD8700611E25 /* ProfileViewController.swift */; };
 		39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */; };
 		39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */; };
+		39F8AB392914F51700F29623 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F8AB382914F51700F29623 /* Lobster-Regular.ttf */; };
+		39F8AB3B2914F79600F29623 /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F8AB3A2914F79600F29623 /* LuckiestGuy-Regular.ttf */; };
+		39F8AB40291508B500F29623 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F8AB3F291508B500F29623 /* OnboardingViewController.swift */; };
+		39F8AB422915152B00F29623 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F8AB412915152B00F29623 /* OnboardingSlide.swift */; };
+		39F8AB44291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F8AB43291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift */; };
 		D567D2CA50BC2F20D8748921 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A01FB976874A88EEF5FF371 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +92,11 @@
 		39BA87B6290FAD8700611E25 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39F8AB382914F51700F29623 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		39F8AB3A2914F79600F29623 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
+		39F8AB3F291508B500F29623 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		39F8AB412915152B00F29623 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		39F8AB43291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A01FB976874A88EEF5FF371 /* Pods_MessengerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,6 +174,7 @@
 		39BA8790290FAAA600611E25 /* MessengerApp */ = {
 			isa = PBXGroup;
 			children = (
+				39F8AB372914F44100F29623 /* Fonts */,
 				39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */,
 				39BA87A9290FABC900611E25 /* Resources */,
 				39BA87A8290FABBE00611E25 /* ViewModels */,
@@ -192,6 +203,7 @@
 		39BA87A6290FABAB00611E25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39F8AB3E2915089C00F29623 /* Onboarding */,
 				39BA87AA290FABFD00611E25 /* Storyboards */,
 				39BA879A290FAAAA00611E25 /* Assets.xcassets */,
 			);
@@ -201,6 +213,7 @@
 		39BA87A7290FABB200611E25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				39F8AB412915152B00F29623 /* OnboardingSlide.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,6 +255,24 @@
 				39BA87AD290FAD0B00611E25 /* RegisterViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		39F8AB372914F44100F29623 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39F8AB3A2914F79600F29623 /* LuckiestGuy-Regular.ttf */,
+				39F8AB382914F51700F29623 /* Lobster-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		39F8AB3E2915089C00F29623 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				39F8AB3F291508B500F29623 /* OnboardingViewController.swift */,
+				39F8AB43291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		8BF44034D870A0D63BE69A20 /* Frameworks */ = {
@@ -321,10 +352,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F8AB392914F51700F29623 /* Lobster-Regular.ttf in Resources */,
 				39BA879E290FAAAA00611E25 /* LaunchScreen.storyboard in Resources */,
 				39BA879B290FAAAA00611E25 /* Assets.xcassets in Resources */,
 				39BA8799290FAAA600611E25 /* Main.storyboard in Resources */,
 				39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */,
+				39F8AB3B2914F79600F29623 /* LuckiestGuy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BA87AC290FACF700611E25 /* LoginViewController.swift in Sources */,
+				39F8AB44291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift in Sources */,
 				39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */,
 				39398C7829141E6900B0BB44 /* RightEarMask.swift in Sources */,
 				39398C6029141E1400B0BB44 /* CATransform3D+Helper.swift in Sources */,
@@ -391,6 +425,7 @@
 				39398C7E29141E6900B0BB44 /* Body.swift in Sources */,
 				39398C6629141E4400B0BB44 /* CritterAssets.swift in Sources */,
 				39398C7F29141E6900B0BB44 /* RightArm.swift in Sources */,
+				39F8AB422915152B00F29623 /* OnboardingSlide.swift in Sources */,
 				39BA87B5290FAD7200611E25 /* NewConversationViewController.swift in Sources */,
 				39BA8796290FAAA600611E25 /* ConversationsViewController.swift in Sources */,
 				39398C8129141E6900B0BB44 /* Muzzle.swift in Sources */,
@@ -408,6 +443,7 @@
 				39398C6729141E4400B0BB44 /* CritterAnimatable.swift in Sources */,
 				39BA8794290FAAA600611E25 /* SceneDelegate.swift in Sources */,
 				39BA87B1290FAD3800611E25 /* PhotoViewerViewController.swift in Sources */,
+				39F8AB40291508B500F29623 /* OnboardingViewController.swift in Sources */,
 				392D4060291484E100D987BE /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +595,8 @@
 				DEVELOPMENT_TEAM = S36XNC4YL6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessengerApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -588,6 +626,8 @@
 				DEVELOPMENT_TEAM = S36XNC4YL6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessengerApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

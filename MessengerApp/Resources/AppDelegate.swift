@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        Thread.sleep(forTimeInterval: 3.0)
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(
             application,

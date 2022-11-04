@@ -282,7 +282,6 @@ final class LoginViewController: UIViewController {
                 self?.alertUserLoginError(message: "Bilgilerinizi Kontrol Edin.")
                 return
             }
-            
             strongSelf.navigationController?.dismiss(animated: true)
         }
     }

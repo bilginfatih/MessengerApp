@@ -33,4 +33,11 @@ extension UIView {
     public var right: CGFloat {
         return self.frame.size.width + self.frame.origin.x
     }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get { return self.cornerRadius }
+        set {
+            self.layer.cornerRadius = newValue
+        }
+    }
 }
