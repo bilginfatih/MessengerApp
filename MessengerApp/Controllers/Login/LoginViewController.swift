@@ -104,10 +104,10 @@ final class LoginViewController: UIViewController {
     }()
     
     /*private let notificationCenter: NotificationCenter = .default
-    
-    deinit {
-        notificationCenter.removeObserver(self)
-    }*/
+     
+     deinit {
+     notificationCenter.removeObserver(self)
+     }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -442,7 +442,8 @@ extension LoginViewController: LoginButtonDelegate {
         }
         
         let facebookReques = FBSDKLoginKit.GraphRequest(graphPath: "me",
-                                                        parameters: ["fields": "email, name"],
+                                                        parameters: ["fields":
+                                                                        "email, first_name, last_name, picture.type(large)"],
                                                         tokenString: token,
                                                         version: nil,
                                                         httpMethod: .get)
@@ -454,8 +455,12 @@ extension LoginViewController: LoginButtonDelegate {
                 return
             }
             
-            guard let userName = result["name"] as? String,
-                  let email = result["email"] as? String else {
+            guard let firstName = result["first_name"] as? String,
+                  let lastName = result["last_name"] as? String,
+                  let email = result["email"] as? String,
+                  let picture = result["picture"] as? [String: Any],
+                  let data = picture["data"] as? [String: Any],
+                  let pictureUrl = data["url"] as? String else {
                 self.alertUserLoginError(message: error?.localizedDescription ?? "Hata!")
                 return
             }
@@ -467,19 +472,38 @@ extension LoginViewController: LoginButtonDelegate {
                     return
                 }
                 
-                let nameCompanents = userName.components(separatedBy: " ")
-                guard nameCompanents.count == 2 else {
-                    return
-                }
-                
-                let firstName = nameCompanents[0]
-                let lastName = nameCompanents[1]
-                
                 DatabaseManager.shared.userExists(with: email) { exists in
                     if !exists {
-                        DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                            lastName: lastName,
-                                                                            emailAddress: email))
+                        let chatUser = ChatAppUser(firstName: firstName,
+                                                   lastName: lastName,
+                                                   emailAddress: email)
+                        DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                            if success {
+                                
+                                guard let url = URL(string: pictureUrl) else {
+                                    return
+                                }
+                                
+                                URLSession.shared.dataTask(with: url, completionHandler: { data, _,_ in
+                                    guard let data = data else {
+                                        return
+                                    }
+                                    // upload image
+                                    let fileName = chatUser.profilePictureFileName
+                                    StorageManager.shared.uploadProfilePicture(with: data,
+                                                                               fileName: fileName,
+                                                                               completion: { result in
+                                        switch result {
+                                        case .success(let downloadUrl):
+                                            UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                            print(downloadUrl)
+                                        case .failure(let error):
+                                            print("Storage manager error: \(error)")
+                                        }
+                                    })
+                                }).resume()
+                            }
+                        })
                     }
                 }
                 

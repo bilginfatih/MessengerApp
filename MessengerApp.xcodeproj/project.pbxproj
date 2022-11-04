@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		392D405C29143D8900D987BE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D405B29143D8900D987BE /* ChatViewController.swift */; };
+		392D4060291484E100D987BE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D405F291484E100D987BE /* StorageManager.swift */; };
 		39398C5F29141E1400B0BB44 /* Degree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C5C29141E1200B0BB44 /* Degree.swift */; };
 		39398C6029141E1400B0BB44 /* CATransform3D+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C5D29141E1300B0BB44 /* CATransform3D+Helper.swift */; };
 		39398C6129141E1400B0BB44 /* UIColors+ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C5E29141E1400B0BB44 /* UIColors+ColorPallete.swift */; };
@@ -49,6 +50,7 @@
 		1C42B06FBA27BFC4D62BF2A6 /* Pods-MessengerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.debug.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		1CDCB82A6A23E424ED463400 /* Pods-MessengerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.release.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.release.xcconfig"; sourceTree = "<group>"; };
 		392D405B29143D8900D987BE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		392D405F291484E100D987BE /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		39398C5C29141E1200B0BB44 /* Degree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Degree.swift; sourceTree = "<group>"; };
 		39398C5D29141E1300B0BB44 /* CATransform3D+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATransform3D+Helper.swift"; sourceTree = "<group>"; };
 		39398C5E29141E1400B0BB44 /* UIColors+ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColors+ColorPallete.swift"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				39BA8793290FAAA600611E25 /* SceneDelegate.swift */,
 				39B3FAB0290FB7BF00B04D0D /* Extensions.swift */,
 				39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */,
+				392D405F291484E100D987BE /* StorageManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				39398C6729141E4400B0BB44 /* CritterAnimatable.swift in Sources */,
 				39BA8794290FAAA600611E25 /* SceneDelegate.swift in Sources */,
 				39BA87B1290FAD3800611E25 /* PhotoViewerViewController.swift in Sources */,
+				392D4060291484E100D987BE /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
