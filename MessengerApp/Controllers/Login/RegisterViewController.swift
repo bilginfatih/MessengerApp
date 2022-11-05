@@ -238,11 +238,11 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
                 strongSelf.spinner.dismiss()
             }
             
-          /*  guard !exists else {
-                // user already exists
-                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
-                return
-            } */
+            /*  guard !exists else {
+             // user already exists
+             strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
+             return
+             } */
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
                 
                 guard authResult != nil, error == nil else {
@@ -257,7 +257,7 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
                         // upload image
                         guard let image = strongSelf.imageView.image,
                               let data = image.pngData() else {
-                                return
+                            return
                         }
                         let fileName = chatUser.profilePictureFileName
                         StorageManager.shared.uploadProfilePicture(with: data,
@@ -274,7 +274,11 @@ class RegisterViewController: UIViewController, PHPickerViewControllerDelegate {
                     }
                 })
                 
-                strongSelf.navigationController?.dismiss(animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .flipHorizontal
+                strongSelf.present(vc, animated: true)
             })
         })
     }
@@ -352,7 +356,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: "Profil Fotoğrafı",
-                                            message: "How would you like to select a picture?",
+                                            message: "",
                                             preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "İptal",
                                             style: .cancel))

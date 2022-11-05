@@ -54,6 +54,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cirtter" width="1024" height="1024"/>
+        <image name="cirtter" width="512" height="512"/>
     </resources>
 </document>
