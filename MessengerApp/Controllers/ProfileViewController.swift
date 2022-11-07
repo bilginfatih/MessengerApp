@@ -117,6 +117,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
                 strongSelf.present(nav, animated: true)
+                UserDefaults.standard.hasOnboarded = false
+                OnboardingViewController.authIsValid = false
+                print("ONBOARDED FALSE")
             }
             catch {
                 print("Failed to log out")

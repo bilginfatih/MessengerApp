@@ -59,7 +59,7 @@
         <!--Onboarding View Controller-->
         <scene sceneID="sf9-u7-tIh">
             <objects>
-                <viewController storyboardIdentifier="onboardingVC" id="bZD-On-sAG" customClass="OnboardingViewController" customModule="MessengerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="bZD-On-sAG" customClass="OnboardingViewController" customModule="MessengerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DvX-8j-H05">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

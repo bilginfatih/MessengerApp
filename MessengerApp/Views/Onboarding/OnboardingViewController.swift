@@ -28,7 +28,6 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
-        print("onboarding")
         super.viewDidLoad()
         // BİRİSİNİ GÖRDÜM SANKİ AA ZEYNEP'MİŞ OHA BU TATLILIK NE!!
         slides = [OnboardingSlide(title: "", description: "", image: #imageLiteral(resourceName: "cirtter")),
@@ -41,8 +40,12 @@ class OnboardingViewController: UIViewController {
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             OnboardingViewController.authIsValid = false
+            UserDefaults.standard.hasOnboarded = false
+            print("VALİDATE FALSE")
         } else {
             OnboardingViewController.authIsValid = true
+            UserDefaults.standard.hasOnboarded = true
+            print("VALİDATE TRUE")
         }
     }
     
@@ -50,18 +53,12 @@ class OnboardingViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         
         if (currentPage == slides.count - 1) && OnboardingViewController.authIsValid == true {
-            print("kullanıcı var")
+            print("ONBOARDED TRUE")
             let controller = storyboard?.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal
             present(controller, animated: true)
-            /* let vc = LoginViewController()
-             let nav = UINavigationController(rootViewController: vc)
-             nav.modalPresentationStyle = .fullScreen
-             nav.modalTransitionStyle = .flipHorizontal
-             present(nav, animated: true) */
         } else if OnboardingViewController.authIsValid == false && (currentPage == slides.count - 1) {
-            print("KULLANICI YOK")
             let vc = LoginViewController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen

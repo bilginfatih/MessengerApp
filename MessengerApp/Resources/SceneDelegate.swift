@@ -16,7 +16,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if #available(iOS 13.0, *) {
                     window?.overrideUserInterfaceStyle = .light
          }
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        
+        let controller: UIViewController!
+        if UserDefaults.standard.hasOnboarded {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            controller = storyboard.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
+        } else {
+            controller = OnboardingViewController.instantiate()
+        }
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

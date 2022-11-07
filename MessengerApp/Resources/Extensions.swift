@@ -41,3 +41,25 @@ extension UIView {
         }
     }
 }
+
+extension UIViewController {
+    
+    static func instantiate() -> Self {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! Self
+    }
+}
+
+extension UserDefaults {
+    private enum UserDefaultsKeys: String {
+        case hasOnboarded
+    }
+    var hasOnboarded: Bool {
+        get {
+            bool(forKey: UserDefaultsKeys.hasOnboarded.rawValue)
+        }
+        set {
+            setValue(newValue, forKey: UserDefaultsKeys.hasOnboarded.rawValue)
+        }
+    }
+}
