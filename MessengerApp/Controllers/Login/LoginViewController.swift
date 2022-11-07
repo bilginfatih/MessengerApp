@@ -282,6 +282,9 @@ final class LoginViewController: UIViewController {
                 self?.alertUserLoginError(message: "Bilgilerinizi Kontrol Edin.")
                 return
             }
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
             vc.modalPresentationStyle = .fullScreen
@@ -468,6 +471,8 @@ extension LoginViewController: LoginButtonDelegate {
                 self.alertUserLoginError(message: error?.localizedDescription ?? "Hata!")
                 return
             }
+            
+            UserDefaults.standard.set(email, forKey: "email")
             
             let credential = FacebookAuthProvider.credential(withAccessToken: token)
             
