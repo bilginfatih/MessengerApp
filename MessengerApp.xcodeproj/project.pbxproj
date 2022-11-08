@@ -595,6 +595,7 @@
 				DEVELOPMENT_TEAM = S36XNC4YL6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessengerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Taygır";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -625,6 +626,7 @@
 				DEVELOPMENT_TEAM = S36XNC4YL6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessengerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Taygır";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -13,9 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if #available(iOS 13.0, *) {
-                    window?.overrideUserInterfaceStyle = .light
-         }
+    
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
@@ -28,6 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
+        if #available(iOS 13.0, *) {
+                    window?.overrideUserInterfaceStyle = .light
+         }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
