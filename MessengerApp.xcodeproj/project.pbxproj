@@ -41,6 +41,11 @@
 		39BA87B3290FAD4C00611E25 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B2290FAD4C00611E25 /* VideoPlayerViewController.swift */; };
 		39BA87B5290FAD7200611E25 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B4290FAD7200611E25 /* NewConversationViewController.swift */; };
 		39BA87B7290FAD8700611E25 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA87B6290FAD8700611E25 /* ProfileViewController.swift */; };
+		39BDA360291B97B000C0B073 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDA35F291B97B000C0B073 /* KeyboardViewController.swift */; };
+		39BDA364291B97B000C0B073 /* Zey.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 39BDA35D291B97AF00C0B073 /* Zey.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		39BDA36A291B97E400C0B073 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDA369291B97E400C0B073 /* Constants.swift */; };
+		39BDA36C291B981500C0B073 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BDA36B291B981500C0B073 /* Extensions.swift */; };
+		39BDA36E291B985300C0B073 /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BDA36D291B985300C0B073 /* Keyboard.xib */; };
 		39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */; };
 		39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */; };
 		39F8AB392914F51700F29623 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F8AB382914F51700F29623 /* Lobster-Regular.ttf */; };
@@ -50,6 +55,30 @@
 		39F8AB44291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F8AB43291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift */; };
 		D567D2CA50BC2F20D8748921 /* Pods_MessengerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A01FB976874A88EEF5FF371 /* Pods_MessengerApp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39BDA362291B97B000C0B073 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39BA8786290FAAA600611E25 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39BDA35C291B97AF00C0B073;
+			remoteInfo = Zey;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		39BDA365291B97B000C0B073 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				39BDA364291B97B000C0B073 /* Zey.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C42B06FBA27BFC4D62BF2A6 /* Pods-MessengerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.debug.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +119,12 @@
 		39BA87B2290FAD4C00611E25 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		39BA87B4290FAD7200611E25 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		39BA87B6290FAD8700611E25 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		39BDA35D291B97AF00C0B073 /* Zey.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Zey.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		39BDA35F291B97B000C0B073 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		39BDA361291B97B000C0B073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39BDA369291B97E400C0B073 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39BDA36B291B981500C0B073 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		39BDA36D291B985300C0B073 /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
 		39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		39F8AB382914F51700F29623 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
@@ -106,6 +141,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D567D2CA50BC2F20D8748921 /* Pods_MessengerApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39BDA35A291B97AF00C0B073 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				39BA8790290FAAA600611E25 /* MessengerApp */,
+				39BDA35E291B97B000C0B073 /* Zey */,
 				39BA878F290FAAA600611E25 /* Products */,
 				CE11F96B4D4FD4762859E168 /* Pods */,
 				8BF44034D870A0D63BE69A20 /* Frameworks */,
@@ -167,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				39BA878E290FAAA600611E25 /* MessengerApp.app */,
+				39BDA35D291B97AF00C0B073 /* Zey.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +301,18 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		39BDA35E291B97B000C0B073 /* Zey */ = {
+			isa = PBXGroup;
+			children = (
+				39BDA35F291B97B000C0B073 /* KeyboardViewController.swift */,
+				39BDA361291B97B000C0B073 /* Info.plist */,
+				39BDA369291B97E400C0B073 /* Constants.swift */,
+				39BDA36B291B981500C0B073 /* Extensions.swift */,
+				39BDA36D291B985300C0B073 /* Keyboard.xib */,
+			);
+			path = Zey;
+			sourceTree = "<group>";
+		};
 		39F8AB372914F44100F29623 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,15 +360,34 @@
 				39BA878B290FAAA600611E25 /* Frameworks */,
 				39BA878C290FAAA600611E25 /* Resources */,
 				3E159A60498DDE254CCA03FE /* [CP] Embed Pods Frameworks */,
+				39BDA365291B97B000C0B073 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				39BDA363291B97B000C0B073 /* PBXTargetDependency */,
 			);
 			name = MessengerApp;
 			productName = MessengerApp;
 			productReference = 39BA878E290FAAA600611E25 /* MessengerApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		39BDA35C291B97AF00C0B073 /* Zey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39BDA368291B97B000C0B073 /* Build configuration list for PBXNativeTarget "Zey" */;
+			buildPhases = (
+				39BDA359291B97AF00C0B073 /* Sources */,
+				39BDA35A291B97AF00C0B073 /* Frameworks */,
+				39BDA35B291B97AF00C0B073 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zey;
+			productName = Zey;
+			productReference = 39BDA35D291B97AF00C0B073 /* Zey.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -326,6 +401,9 @@
 				TargetAttributes = {
 					39BA878D290FAAA600611E25 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					39BDA35C291B97AF00C0B073 = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
@@ -343,6 +421,7 @@
 			projectRoot = "";
 			targets = (
 				39BA878D290FAAA600611E25 /* MessengerApp */,
+				39BDA35C291B97AF00C0B073 /* Zey */,
 			);
 		};
 /* End PBXProject section */
@@ -358,6 +437,14 @@
 				39BA8799290FAAA600611E25 /* Main.storyboard in Resources */,
 				39EDEE6C290FF7FA00F02FB5 /* GoogleService-Info.plist in Resources */,
 				39F8AB3B2914F79600F29623 /* LuckiestGuy-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39BDA35B291B97AF00C0B073 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39BDA36E291B985300C0B073 /* Keyboard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +535,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39BDA359291B97AF00C0B073 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39BDA360291B97B000C0B073 /* KeyboardViewController.swift in Sources */,
+				39BDA36A291B97E400C0B073 /* Constants.swift in Sources */,
+				39BDA36C291B981500C0B073 /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39BDA363291B97B000C0B073 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39BDA35C291B97AF00C0B073 /* Zey */;
+			targetProxy = 39BDA362291B97B000C0B073 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		39BA8797290FAAA600611E25 /* Main.storyboard */ = {
@@ -588,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C42B06FBA27BFC4D62BF2A6 /* Pods-MessengerApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -619,6 +725,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDCB82A6A23E424ED463400 /* Pods-MessengerApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -646,6 +753,56 @@
 			};
 			name = Release;
 		};
+		39BDA366291B97B000C0B073 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S36XNC4YL6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Zey/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Zey;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thebilgin.MessengerApp.Zey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39BDA367291B97B000C0B073 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S36XNC4YL6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Zey/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Zey;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thebilgin.MessengerApp.Zey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -663,6 +820,15 @@
 			buildConfigurations = (
 				39BA87A3290FAAAA00611E25 /* Debug */,
 				39BA87A4290FAAAA00611E25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39BDA368291B97B000C0B073 /* Build configuration list for PBXNativeTarget "Zey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BDA366291B97B000C0B073 /* Debug */,
+				39BDA367291B97B000C0B073 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
