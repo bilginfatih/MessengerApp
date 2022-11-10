@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    let data = ["Log Out"]
+    let data = ["Çıkış Yap"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +119,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 strongSelf.present(nav, animated: true)
                 UserDefaults.standard.hasOnboarded = false
                 OnboardingViewController.authIsValid = false
-                print("ONBOARDED FALSE")
             }
             catch {
                 print("Failed to log out")

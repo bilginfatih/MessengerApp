@@ -28,6 +28,7 @@
 		39398C8129141E6900B0BB44 /* Muzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7429141E6700B0BB44 /* Muzzle.swift */; };
 		39398C8229141E6900B0BB44 /* LeftEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7529141E6800B0BB44 /* LeftEarMask.swift */; };
 		39398C8329141E6900B0BB44 /* RightEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7629141E6900B0BB44 /* RightEye.swift */; };
+		399673B3291BCEC500146705 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399673B2291BCEC500146705 /* ConversationTableViewCell.swift */; };
 		39B3FAB1290FB7BF00B04D0D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3FAB0290FB7BF00B04D0D /* Extensions.swift */; };
 		39BA8792290FAAA600611E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA8791290FAAA600611E25 /* AppDelegate.swift */; };
 		39BA8794290FAAA600611E25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA8793290FAAA600611E25 /* SceneDelegate.swift */; };
@@ -104,6 +105,7 @@
 		39398C7429141E6700B0BB44 /* Muzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Muzzle.swift; sourceTree = "<group>"; };
 		39398C7529141E6800B0BB44 /* LeftEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEarMask.swift; sourceTree = "<group>"; };
 		39398C7629141E6900B0BB44 /* RightEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEye.swift; sourceTree = "<group>"; };
+		399673B2291BCEC500146705 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		39B3FAB0290FB7BF00B04D0D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39BA878E290FAAA600611E25 /* MessengerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BA8791290FAAA600611E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				39F8AB3E2915089C00F29623 /* Onboarding */,
 				39BA87AA290FABFD00611E25 /* Storyboards */,
 				39BA879A290FAAAA00611E25 /* Assets.xcassets */,
+				399673B2291BCEC500146705 /* ConversationTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				39BA87AE290FAD0B00611E25 /* RegisterViewController.swift in Sources */,
 				39398C7B29141E6900B0BB44 /* Mouth.swift in Sources */,
 				392D405C29143D8900D987BE /* ChatViewController.swift in Sources */,
+				399673B3291BCEC500146705 /* ConversationTableViewCell.swift in Sources */,
 				39398C8229141E6900B0BB44 /* LeftEarMask.swift in Sources */,
 				39398C6829141E4400B0BB44 /* CritterView.swift in Sources */,
 				39398C7A29141E6900B0BB44 /* LeftArm.swift in Sources */,

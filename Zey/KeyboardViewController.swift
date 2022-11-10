@@ -155,7 +155,7 @@ class KeyboardViewController: UIInputViewController {
                 }
                 
                 //top row is longest row so it should decide button width
-                print("button width: ", buttonWidth)
+                
                 if key == "⌫" || key == "↩" || key == "#+=" || key == "ABC" || key == "123" || key == "⬆️" || key == "🌐"{
                     button.widthAnchor.constraint(equalToConstant: buttonWidth + buttonWidth/2).isActive = true
                     button.layer.setValue(true, forKey: "isSpecial")

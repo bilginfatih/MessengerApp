@@ -41,11 +41,9 @@ class OnboardingViewController: UIViewController {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             OnboardingViewController.authIsValid = false
             UserDefaults.standard.hasOnboarded = false
-            print("VALİDATE FALSE")
         } else {
             OnboardingViewController.authIsValid = true
             UserDefaults.standard.hasOnboarded = true
-            print("VALİDATE TRUE")
         }
     }
     
@@ -53,7 +51,6 @@ class OnboardingViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         
         if (currentPage == slides.count - 1) && OnboardingViewController.authIsValid == true {
-            print("ONBOARDED TRUE")
             let controller = storyboard?.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal

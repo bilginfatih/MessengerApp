@@ -285,7 +285,6 @@ final class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(email, forKey: "email")
             
-            print("LOGİN ONBOARD TRUE")
             UserDefaults.standard.hasOnboarded = true
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DashboardTB") as! UITabBarController
