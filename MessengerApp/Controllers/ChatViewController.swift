@@ -400,6 +400,7 @@ extension ChatViewController: MessageCellDelegate {
             guard let imageUrl = media.url else {
                 return
             }
+            tabBarController?.tabBar.isHidden = true
             let vc = PhotoViewerViewController(with: imageUrl)
             self.navigationController?.pushViewController(vc, animated: true)
         default:

@@ -34,11 +34,20 @@ class PhotoViewerViewController: UIViewController {
         view.backgroundColor = .black
         view.addSubview(imageView)
         imageView.sd_setImage(with: self.url)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Geri", image: UIImage(systemName: "chevron.backward"), target: self, action: #selector(backButton))
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageView.frame = view.bounds
+    }
+    
+    
+    @objc func backButton() {
+        tabBarController?.tabBar.isHidden = false
+        let vc = ConversationsViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
