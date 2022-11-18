@@ -212,28 +212,28 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="D9L-t0-utb" kind="relationship" relationship="rootViewController" id="Q4F-1P-Vrg"/>
+                        <segue destination="MhC-n5-6Wz" kind="relationship" relationship="rootViewController" id="wlI-l7-XqJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDP-xc-Q5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1342" y="-736"/>
         </scene>
-        <!--Drawing View Controller-->
-        <scene sceneID="OzD-zQ-SXu">
+        <!--Test View Controller-->
+        <scene sceneID="uwt-Nq-PuX">
             <objects>
-                <viewController id="D9L-t0-utb" customClass="DrawingViewController" customModule="MessengerApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hjm-fH-hav">
+                <viewController id="MhC-n5-6Wz" customClass="testViewController" customModule="MessengerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jNU-5R-d6k">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="eaS-Wj-JLx"/>
+                        <viewLayoutGuide key="safeArea" id="P27-Rr-tAu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DM3-u3-ET8"/>
+                    <navigationItem key="navigationItem" id="ryA-d2-ZnM"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDt-9O-79y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRq-3H-LTL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="-737"/>
+            <point key="canvasLocation" x="2180" y="-742"/>
         </scene>
         <!--Chats-->
         <scene sceneID="G7s-1X-PLS">

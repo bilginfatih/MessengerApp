@@ -28,7 +28,16 @@
 		39398C8129141E6900B0BB44 /* Muzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7429141E6700B0BB44 /* Muzzle.swift */; };
 		39398C8229141E6900B0BB44 /* LeftEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7529141E6800B0BB44 /* LeftEarMask.swift */; };
 		39398C8329141E6900B0BB44 /* RightEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39398C7629141E6900B0BB44 /* RightEye.swift */; };
+		397B3F352922687E00089BF8 /* DrawingDocModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F332922687E00089BF8 /* DrawingDocModel.xcdatamodeld */; };
+		397B3F37292268B400089BF8 /* DrawingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F36292268B400089BF8 /* DrawingDocument.swift */; };
+		397B3F39292268FF00089BF8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F38292268FF00089BF8 /* CoreDataManager.swift */; };
+		397B3F3B29226DEA00089BF8 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F3A29226DE900089BF8 /* DrawingManager.swift */; };
+		397B3F3E29226FB600089BF8 /* AddNewDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F3D29226FB600089BF8 /* AddNewDocument.swift */; };
+		397B3F402922711500089BF8 /* DrawingWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F3F2922711500089BF8 /* DrawingWrapper.swift */; };
+		397B3F422922731B00089BF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B3F412922731B00089BF8 /* ContentView.swift */; };
 		399673B3291BCEC500146705 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399673B2291BCEC500146705 /* ConversationTableViewCell.swift */; };
+		3997E80229227C0C002B616F /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E80129227C0C002B616F /* testViewController.swift */; };
+		3997E8042922AFB9002B616F /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E8032922AFB9002B616F /* PlaceholderView.swift */; };
 		39B3FAB1290FB7BF00B04D0D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3FAB0290FB7BF00B04D0D /* Extensions.swift */; };
 		39BA8792290FAAA600611E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA8791290FAAA600611E25 /* AppDelegate.swift */; };
 		39BA8794290FAAA600611E25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA8793290FAAA600611E25 /* SceneDelegate.swift */; };
@@ -106,7 +115,16 @@
 		39398C7429141E6700B0BB44 /* Muzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Muzzle.swift; sourceTree = "<group>"; };
 		39398C7529141E6800B0BB44 /* LeftEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEarMask.swift; sourceTree = "<group>"; };
 		39398C7629141E6900B0BB44 /* RightEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEye.swift; sourceTree = "<group>"; };
+		397B3F342922687E00089BF8 /* DrawingDocModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawingDocModel.xcdatamodel; sourceTree = "<group>"; };
+		397B3F36292268B400089BF8 /* DrawingDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDocument.swift; sourceTree = "<group>"; };
+		397B3F38292268FF00089BF8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		397B3F3A29226DE900089BF8 /* DrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingManager.swift; sourceTree = "<group>"; };
+		397B3F3D29226FB600089BF8 /* AddNewDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDocument.swift; sourceTree = "<group>"; };
+		397B3F3F2922711500089BF8 /* DrawingWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingWrapper.swift; sourceTree = "<group>"; };
+		397B3F412922731B00089BF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		399673B2291BCEC500146705 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		3997E80129227C0C002B616F /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		3997E8032922AFB9002B616F /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		39B3FAB0290FB7BF00B04D0D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39BA878E290FAAA600611E25 /* MessengerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BA8791290FAAA600611E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +217,18 @@
 			path = Parts;
 			sourceTree = "<group>";
 		};
+		397B3F3C29226F9A00089BF8 /* SwiftUIView */ = {
+			isa = PBXGroup;
+			children = (
+				397B3F3D29226FB600089BF8 /* AddNewDocument.swift */,
+				397B3F3F2922711500089BF8 /* DrawingWrapper.swift */,
+				397B3F412922731B00089BF8 /* ContentView.swift */,
+				3997E80129227C0C002B616F /* testViewController.swift */,
+				3997E8032922AFB9002B616F /* PlaceholderView.swift */,
+			);
+			path = SwiftUIView;
+			sourceTree = "<group>";
+		};
 		39BA8785290FAAA600611E25 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +252,7 @@
 		39BA8790290FAAA600611E25 /* MessengerApp */ = {
 			isa = PBXGroup;
 			children = (
+				397B3F3C29226F9A00089BF8 /* SwiftUIView */,
 				39F8AB372914F44100F29623 /* Fonts */,
 				39BA87A9290FABC900611E25 /* Resources */,
 				39BA87A8290FABBE00611E25 /* ViewModels */,
@@ -230,6 +261,7 @@
 				39BA87A5290FAB9E00611E25 /* Controllers */,
 				39BA879F290FAAAA00611E25 /* Info.plist */,
 				39EDEE6B290FF7FA00F02FB5 /* GoogleService-Info.plist */,
+				397B3F332922687E00089BF8 /* DrawingDocModel.xcdatamodeld */,
 			);
 			path = MessengerApp;
 			sourceTree = "<group>";
@@ -264,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				39F8AB412915152B00F29623 /* OnboardingSlide.swift */,
+				397B3F36292268B400089BF8 /* DrawingDocument.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +317,8 @@
 				39B3FAB0290FB7BF00B04D0D /* Extensions.swift */,
 				39EDEE69290FF4AF00F02FB5 /* DatabaseManager.swift */,
 				392D405F291484E100D987BE /* StorageManager.swift */,
+				397B3F38292268FF00089BF8 /* CoreDataManager.swift */,
+				397B3F3A29226DE900089BF8 /* DrawingManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -506,6 +541,7 @@
 				39BA87AC290FACF700611E25 /* LoginViewController.swift in Sources */,
 				39F8AB44291517C300F29623 /* OnboardingCollectionCollectionViewCell.swift in Sources */,
 				39EDEE6A290FF4AF00F02FB5 /* DatabaseManager.swift in Sources */,
+				3997E80229227C0C002B616F /* testViewController.swift in Sources */,
 				39398C7829141E6900B0BB44 /* RightEarMask.swift in Sources */,
 				39398C6029141E1400B0BB44 /* CATransform3D+Helper.swift in Sources */,
 				39BA87AE290FAD0B00611E25 /* RegisterViewController.swift in Sources */,
@@ -514,11 +550,13 @@
 				399673B3291BCEC500146705 /* ConversationTableViewCell.swift in Sources */,
 				39398C8229141E6900B0BB44 /* LeftEarMask.swift in Sources */,
 				39398C6829141E4400B0BB44 /* CritterView.swift in Sources */,
+				397B3F3B29226DEA00089BF8 /* DrawingManager.swift in Sources */,
 				39398C7A29141E6900B0BB44 /* LeftArm.swift in Sources */,
 				39398C7929141E6900B0BB44 /* LeftEye.swift in Sources */,
 				39398C7E29141E6900B0BB44 /* Body.swift in Sources */,
 				39398C6629141E4400B0BB44 /* CritterAssets.swift in Sources */,
 				39398C7F29141E6900B0BB44 /* RightArm.swift in Sources */,
+				3997E8042922AFB9002B616F /* PlaceholderView.swift in Sources */,
 				39F8AB422915152B00F29623 /* OnboardingSlide.swift in Sources */,
 				39BA87B5290FAD7200611E25 /* NewConversationViewController.swift in Sources */,
 				39BA8796290FAAA600611E25 /* ConversationsViewController.swift in Sources */,
@@ -530,15 +568,21 @@
 				39398C5F29141E1400B0BB44 /* Degree.swift in Sources */,
 				39BA8792290FAAA600611E25 /* AppDelegate.swift in Sources */,
 				39BA87B7290FAD8700611E25 /* ProfileViewController.swift in Sources */,
+				397B3F37292268B400089BF8 /* DrawingDocument.swift in Sources */,
+				397B3F352922687E00089BF8 /* DrawingDocModel.xcdatamodeld in Sources */,
 				39398C6129141E1400B0BB44 /* UIColors+ColorPallete.swift in Sources */,
 				39398C8329141E6900B0BB44 /* RightEye.swift in Sources */,
 				39398C7C29141E6900B0BB44 /* LeftEar.swift in Sources */,
+				397B3F3E29226FB600089BF8 /* AddNewDocument.swift in Sources */,
+				397B3F422922731B00089BF8 /* ContentView.swift in Sources */,
 				39398C8029141E6900B0BB44 /* Nose.swift in Sources */,
 				39398C6729141E4400B0BB44 /* CritterAnimatable.swift in Sources */,
+				397B3F402922711500089BF8 /* DrawingWrapper.swift in Sources */,
 				39E251BB2920F20D0036D9B4 /* DrawingViewControllerViewController.swift in Sources */,
 				39BA8794290FAAA600611E25 /* SceneDelegate.swift in Sources */,
 				39BA87B1290FAD3800611E25 /* PhotoViewerViewController.swift in Sources */,
 				39F8AB40291508B500F29623 /* OnboardingViewController.swift in Sources */,
+				397B3F39292268FF00089BF8 /* CoreDataManager.swift in Sources */,
 				392D4060291484E100D987BE /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,6 +888,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		397B3F332922687E00089BF8 /* DrawingDocModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				397B3F342922687E00089BF8 /* DrawingDocModel.xcdatamodel */,
+			);
+			currentVersion = 397B3F342922687E00089BF8 /* DrawingDocModel.xcdatamodel */;
+			path = DrawingDocModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 39BA8786290FAAA600611E25 /* Project object */;
 }

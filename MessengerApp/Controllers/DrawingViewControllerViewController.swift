@@ -51,11 +51,15 @@ class DrawingViewController: UIViewController {
         present(controller, animated: true, completion: nil)
     }
     
+    var drawingData = Data()
+    
+    var drawingChanged: (Data) -> Void = { _ in }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(canvas)
-        configureNavigationItem()
+        //configureNavigationItem()
         
         NSLayoutConstraint.activate([
             canvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -66,8 +70,18 @@ class DrawingViewController: UIViewController {
         
         toolPicker.setVisible(true, forFirstResponder: canvas)
         toolPicker.addObserver(canvas)
-        
+        canvas.delegate = self
         canvas.becomeFirstResponder()
+        
+        if let drawing = try? PKDrawing(data: drawingData) {
+            canvas.drawing = drawing
+        }
     }
     
+}
+
+extension DrawingViewController: PKToolPickerObserver, PKCanvasViewDelegate {
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        drawingChanged(canvasView.drawing.dataRepresentation())
+    }
 }
